@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from 'react';
+import './App.scss';
+import reactSvg from './assets/react.svg';
+import { categories as data } from './backend/data';
+import Card from './components/Card';
+export default class App extends Component {
+  render() {
+    return (
+      <>
+        <img src={reactSvg} className="top-img" alt="reactjs" />
+        <section className="menu-container">
+          <div className="bars"></div>
+          <section className="top">Languages</section>
+          <section className="bottom">
+            {data.map((item, index) => {
+              return <Card key={index} {...item} />;
+            })}
+          </section>
+        </section>
+      </>
+    );
+  }
 }
-
-export default App;
